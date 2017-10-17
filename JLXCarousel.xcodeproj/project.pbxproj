@@ -38,10 +38,10 @@
 		1686D3281F4189D300F6FF13 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D3121F4189D300F6FF13 /* UIImageView+WebCache.m */; };
 		1686D3291F4189D300F6FF13 /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D3141F4189D300F6FF13 /* UIView+WebCache.m */; };
 		1686D32A1F4189D300F6FF13 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D3161F4189D300F6FF13 /* UIView+WebCacheOperation.m */; };
-		168E45A81F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.24.17.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45A41F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.24.17.png */; };
-		168E45A91F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.23.17.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45A51F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.23.17.png */; };
 		168E45AA1F95A18F006285BA /* ezgif-1-365bd769d5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 168E45A61F95A18F006285BA /* ezgif-1-365bd769d5.gif */; };
-		168E45AB1F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.22.18.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45A71F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.22.18.png */; };
+		168E45AF1F95A3B8006285BA /* SimulatorScreenShot20171017102218.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45AC1F95A3B8006285BA /* SimulatorScreenShot20171017102218.png */; };
+		168E45B01F95A3B8006285BA /* SimulatorScreenShot20171017102417.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45AD1F95A3B8006285BA /* SimulatorScreenShot20171017102417.png */; };
+		168E45B11F95A3B8006285BA /* SimulatorScreenShot20171017102317.png in Resources */ = {isa = PBXBuildFile; fileRef = 168E45AE1F95A3B8006285BA /* SimulatorScreenShot20171017102317.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,10 +122,10 @@
 		1686D3141F4189D300F6FF13 /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		1686D3151F4189D300F6FF13 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		1686D3161F4189D300F6FF13 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		168E45A41F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.24.17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 2017年10月17日 上午10.24.17.png"; sourceTree = "<group>"; };
-		168E45A51F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.23.17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 2017年10月17日 上午10.23.17.png"; sourceTree = "<group>"; };
 		168E45A61F95A18F006285BA /* ezgif-1-365bd769d5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ezgif-1-365bd769d5.gif"; sourceTree = "<group>"; };
-		168E45A71F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.22.18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 2017年10月17日 上午10.22.18.png"; sourceTree = "<group>"; };
+		168E45AC1F95A3B8006285BA /* SimulatorScreenShot20171017102218.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimulatorScreenShot20171017102218.png; sourceTree = "<group>"; };
+		168E45AD1F95A3B8006285BA /* SimulatorScreenShot20171017102417.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimulatorScreenShot20171017102417.png; sourceTree = "<group>"; };
+		168E45AE1F95A3B8006285BA /* SimulatorScreenShot20171017102317.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimulatorScreenShot20171017102317.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,9 +279,9 @@
 		168E45A31F95A186006285BA /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				168E45A71F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.22.18.png */,
-				168E45A41F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.24.17.png */,
-				168E45A51F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.23.17.png */,
+				168E45AC1F95A3B8006285BA /* SimulatorScreenShot20171017102218.png */,
+				168E45AD1F95A3B8006285BA /* SimulatorScreenShot20171017102417.png */,
+				168E45AE1F95A3B8006285BA /* SimulatorScreenShot20171017102317.png */,
 				168E45A61F95A18F006285BA /* ezgif-1-365bd769d5.gif */,
 			);
 			path = Image;
@@ -395,15 +395,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				168E45AA1F95A18F006285BA /* ezgif-1-365bd769d5.gif in Resources */,
-				168E45AB1F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.22.18.png in Resources */,
 				1686D2EB1F4187D800F6FF13 /* 20140306110441515.jpg in Resources */,
-				168E45A91F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.23.17.png in Resources */,
 				16782C2C1F31BEAE0069475C /* LaunchScreen.storyboard in Resources */,
-				168E45A81F95A18F006285BA /* Simulator Screen Shot 2017年10月17日 上午10.24.17.png in Resources */,
 				1686D2E91F4187D800F6FF13 /* 20170406135300.jpg in Resources */,
 				16782C291F31BEAE0069475C /* Assets.xcassets in Resources */,
 				1686D2EA1F4187D800F6FF13 /* 20170406135400.jpg in Resources */,
 				16782C271F31BEAE0069475C /* Main.storyboard in Resources */,
+				168E45B11F95A3B8006285BA /* SimulatorScreenShot20171017102317.png in Resources */,
+				168E45B01F95A3B8006285BA /* SimulatorScreenShot20171017102417.png in Resources */,
+				168E45AF1F95A3B8006285BA /* SimulatorScreenShot20171017102218.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
