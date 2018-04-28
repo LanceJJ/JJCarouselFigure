@@ -1,4 +1,4 @@
-# JLXCarouselFigure
+# JJCarouselFigure
 
 ## 一款简单实用的无限轮播图
 
@@ -26,12 +26,12 @@
 ```	
 
 ## 使用方法
-* 导入JLXCarousel文件，按步骤创建即可
+* 导入JJCarousel文件，按步骤创建即可
 
 ```objc
     
     //创建
-    JLXCarouselFigure *view = [[JLXCarouselFigure alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 488 / 750) pageType:JLXPageMiddle];
+    JJCarouselFigure *view = [[JJCarouselFigure alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 488 / 750) pageType:JJPageMiddle];
     //图片（本地+网络）
     NSArray *images = @[[UIImage imageNamed:@"20170406135300.jpg"],
                         [UIImage imageNamed:@"20170406135400.jpg"],
@@ -70,7 +70,7 @@
 
 ## 效果图
 
-![](https://github.com/lingxinjiang/JLXCarouselFigure/raw/master/JLXCarousel/Image/SimulatorScreenShot20171017102218.png)
-![](https://github.com/lingxinjiang/JLXCarouselFigure/raw/master/JLXCarousel/Image/SimulatorScreenShot20171017102417.png)
-![](https://github.com/lingxinjiang/JLXCarouselFigure/raw/master/JLXCarousel/Image/SimulatorScreenShot20171017102317.png)
-![](https://github.com/lingxinjiang/JLXCarouselFigure/raw/master/JLXCarousel/Image/ezgif-1-365bd769d5.gif)
+![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102218.png)
+![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102417.png)
+![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102317.png)
+![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/ezgif-1-365bd769d5.gif)
