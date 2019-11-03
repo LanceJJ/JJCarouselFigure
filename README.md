@@ -67,7 +67,6 @@
     
     view.imagesArray = images;
     
-    
     #pragma mark -- JJCycleScrollViewDelegate Delegate
     //（可以使用block，也可以使用代理）
     - (void)jj_cycleScrollLoadingImage:(UIImageView *)imageView url:(NSString *)url
