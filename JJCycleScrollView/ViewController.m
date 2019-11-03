@@ -20,7 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
     [self setupCycleScrollViewType1];
     [self setupCycleScrollViewType2];
     [self setupCycleScrollViewType3];
@@ -32,7 +31,7 @@
     JJCycleScrollView *view = [[JJCycleScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 180 / 375)];
     view.delegate = self;
     view.pageControlAliment = JJPageControlAlimentCenter;
-    view.itemZoomScale = 1;
+    view.itemZoomScale = 1;//缩放比为1时，普通样式
     //    view.currentPageIndicatorTintColor = [UIColor redColor];
     //    view.pageIndicatorTintColor = [UIColor blueColor];
     //    view.bottomViewColor = [UIColor colorWithWhite:0 alpha:0.5];
