@@ -44,12 +44,12 @@
     
     //    view.titlesArray = titles;
     
-    //网络图片回调加载
+    //网络图片回调加载（可以使用block，也可以使用代理）
     [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
     }];
     
-    //点击图片回调
+    //点击图片回调（可以使用block，也可以使用代理）
     [view selectItemBlock:^(NSInteger index) {
         NSLog(@"%ld", (long)index);
     }];
@@ -66,6 +66,20 @@
     
     
     view.imagesArray = images;
+    
+    
+    #pragma mark -- JJCycleScrollViewDelegate Delegate
+    //（可以使用block，也可以使用代理）
+    - (void)jj_cycleScrollLoadingImage:(UIImageView *)imageView url:(NSString *)url
+    {
+    //    [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
+    }
+
+    //（可以使用block，也可以使用代理）
+    - (void)jj_cycleScrollDidSelectItemAtIndex:(NSInteger)index
+    {
+        NSLog(@"点击了-%ld", (long)index);
+    }
     
 ```	
 
