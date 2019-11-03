@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     [self setupCycleScrollViewType1];
     [self setupCycleScrollViewType2];
     [self setupCycleScrollViewType3];
