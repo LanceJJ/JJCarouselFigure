@@ -5,72 +5,71 @@
 * 可以设置UIPageControl在不同位置显示，左侧，中间，右侧，当UIPageControl在中间显示时，默认不显示文本
 * 可以同时支持本地图片与网络图片
 * 当有网络图片时，在数组中添加图片路径，加载网络图片的方法，可以在外放的回调中进行维护
+* 新增缩放模式
 
 ```objc
     //图片（本地+网络）
     NSArray *images = @[[UIImage imageNamed:@"20170406135300.jpg"],
                         [UIImage imageNamed:@"20170406135400.jpg"],
                         [UIImage imageNamed:@"20140306110441515.jpg"],
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2047158/beerhenge.jpg",
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2016158/avalanche.jpg",
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"];
+                        @"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg"];
 ```	
 
 ```objc
-     //加载数据源，网络图片回调加载
-    [view setImages:images loadingImageBlock:^(UIImageView *imageView, NSString *imageUrlStr) {
-        
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr] completed:nil];
-        
+     //网络图片回调加载
+    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
     }];
 ```	
 
 ## 使用方法
-* 导入JJCarousel文件，按步骤创建即可
+* JJCycleScrollView，按步骤创建即可
 
 ```objc
     
     //创建
-    JJCarouselFigure *view = [[JJCarouselFigure alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 488 / 750) pageType:JJPageMiddle];
-    //图片（本地+网络）
-    NSArray *images = @[[UIImage imageNamed:@"20170406135300.jpg"],
-                        [UIImage imageNamed:@"20170406135400.jpg"],
-                        [UIImage imageNamed:@"20140306110441515.jpg"],
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2047158/beerhenge.jpg",
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2016158/avalanche.jpg",
-                        @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"];
-    //图片标题（可以不设置）（当标题个数与图片个数不一致时，也不显示标题）
-    NSArray *titles = @[@"图片一",
-                        @"图片二",
-                        @"图片三",
-                        @"图片四",
-                        @"图片五",
-                        @"图片六"];
-
-    view.titlesArray = titles;
+    JJCycleScrollView *view = [[JJCycleScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 180 / 375)];
+    view.delegate = self;
+    view.pageControlAliment = JJPageControlAlimentCenter;
+    view.itemZoomScale = 1;//缩放比为1时，普通样式（可以更改缩放比来实现轮播图的缩放效果）
+    //    view.itemSpacing = 10;图片之间的间距
+    //    view.itemSize = CGSizeMake(view.frame.size.width - 50, view.frame.size.width);//图片的尺寸
+    //    view.currentPageIndicatorTintColor = [UIColor redColor];
+    //    view.pageIndicatorTintColor = [UIColor blueColor];
+    //    view.bottomViewColor = [UIColor colorWithWhite:0 alpha:0.5];
+    ////    //标题（可以不设置）
+    //    NSArray *titles = @[@"图片一",
+    //                        @"图片二",
+    //                        @"图片三"];
     
-    //加载数据源，网络图片回调加载
-    [view setImages:images loadingImageBlock:^(UIImageView *imageView, NSString *imageUrlStr) {
-        
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr] completed:nil];
-        
+    //    view.titlesArray = titles;
+    
+    //网络图片回调加载
+    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+        [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
     }];
     
     //点击图片回调
-    [view tapFigureBlock:^(NSInteger index) {
-        
+    [view selectItemBlock:^(NSInteger index) {
         NSLog(@"%ld", (long)index);
-        
     }];
     
     //添加
     [self.view addSubview:view];
     
+    //图片（本地+网络）
+    NSArray *images = @[[UIImage imageNamed:@"20170406135300.jpg"],
+                        [UIImage imageNamed:@"20170406135400.jpg"],
+                        [UIImage imageNamed:@"20140306110441515.jpg"],
+                        @"https://s-media-cache-ak0.pinimg.com/1200x/2e/0c/c5/2e0cc5d86e7b7cd42af225c29f21c37f.jpg"];
+
+    
+    
+    view.imagesArray = images;
+    
 ```	
 
 ## 效果图
 
-![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102218.png)
-![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102417.png)
-![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/SimulatorScreenShot20171017102317.png)
-![](https://github.com/LanceJJ/JJCarouselFigure/raw/master/JJCarousel/Image/ezgif-1-365bd769d5.gif)
+![](https://github.com/LanceJJ/JJCycleScrollView/raw/master/JJCycleScrollView/Image/IMG_0319.PNG)
+
