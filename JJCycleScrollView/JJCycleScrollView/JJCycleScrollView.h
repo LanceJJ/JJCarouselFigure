@@ -11,12 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
-Description PageControl控件的位置（默认居中）
-
-- JJPageControlAlimentCenter: 居中
-- JJPageControlAlimentLeft: 靠左
-- JJPageControlAlimentRight: 靠右
-*/
+ Description PageControl控件的位置（默认居中）
+ 
+ - JJPageControlAlimentCenter: 居中
+ - JJPageControlAlimentLeft: 靠左
+ - JJPageControlAlimentRight: 靠右
+ */
 typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
     JJPageControlAlimentCenter,
     JJPageControlAlimentLeft,
@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
 @protocol JJCycleScrollViewDelegate <NSObject>
 
 @optional
+- (void)jj_cycleScrollDidScrollToIndex:(NSInteger)index;
 - (void)jj_cycleScrollDidSelectItemAtIndex:(NSInteger)index;
 - (void)jj_cycleScrollLoadingImage:(UIImageView *)imageView url:(NSString *)url;
 
@@ -105,6 +106,11 @@ typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
  Description 标题数组
  */
 @property (nonatomic, strong) NSArray *titlesArray;
+
+/**
+ Description 图片滚动的回调
+ */
+- (void)scrollToIndexBlock:(void(^)(NSInteger index))block;
 
 /**
  Description 点击回调

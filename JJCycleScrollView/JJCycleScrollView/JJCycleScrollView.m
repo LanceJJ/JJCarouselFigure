@@ -8,13 +8,15 @@
 
 #import "JJCycleScrollView.h"
 
-#define JJ_Figure_BottomViewH 40
+#define JJ_Figure_BottomViewH 35
 
+typedef void(^JJScrollToIndexBlock) (NSInteger index);
 typedef void(^JJSelectItemBlock) (NSInteger index);
 typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
 
 @interface JJCycleScrollView() <UIScrollViewDelegate>
 
+@property (nonatomic, copy) JJScrollToIndexBlock scrollToIndexBlock;
 @property (nonatomic, copy) JJSelectItemBlock selectItemBlock;
 @property (nonatomic, copy) JJLoadImageBlock loadImageBlock;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -170,6 +172,8 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
  */
 - (void)updateCurrentViewWithCurrentPage:(NSInteger)page
 {
+    if (!self.imagesArray.count) return;
+    
     NSInteger preRight = [self updatePage:page - 2];
     NSInteger pre = [self updatePage:page - 1];
     self.currentPage = [self updatePage:page];
@@ -213,6 +217,15 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     if (self.titlesArray.count > self.currentPage) {
         self.titleLabel.text = self.titlesArray[self.currentPage];
     }
+    
+    if (self.scrollToIndexBlock) {
+        self.scrollToIndexBlock(self.currentPage);
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(jj_cycleScrollDidScrollToIndex:)]) {
+        [self.delegate jj_cycleScrollDidScrollToIndex:self.currentPage];
+    }
+    
 }
 
 /**
@@ -220,6 +233,8 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
  */
 - (void)updateSubviewsLayout
 {
+    if (!self.imagesArray.count) return;
+    
     self.itemWidth = self.itemSize.width;
     self.itemHeight = self.itemSize.height;
     
@@ -261,15 +276,15 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
             break;
         case JJPageControlAlimentLeft:
         {
-            self.pageControl.frame = CGRectMake(pageMargin, 0, pageW, JJ_Figure_BottomViewH);
-            self.titleLabel.frame = CGRectMake(pageW + pageMargin, 0, self.itemWidth - pageW, JJ_Figure_BottomViewH);
+            self.pageControl.frame = CGRectMake(pageMargin + 10, 0, pageW, JJ_Figure_BottomViewH);
+            self.titleLabel.frame = CGRectMake(pageW + pageMargin + 10, 0, self.itemWidth - pageW - 10, JJ_Figure_BottomViewH);
             self.titleLabel.textAlignment = NSTextAlignmentRight;
         }
             break;
         case JJPageControlAlimentRight:
         {
-            self.pageControl.frame = CGRectMake(self.itemWidth + pageMargin - pageW, 0, pageW, JJ_Figure_BottomViewH);
-            self.titleLabel.frame = CGRectMake(pageMargin, 0, self.itemWidth - pageW, JJ_Figure_BottomViewH);
+            self.pageControl.frame = CGRectMake(self.itemWidth + pageMargin - pageW - 10, 0, pageW, JJ_Figure_BottomViewH);
+            self.titleLabel.frame = CGRectMake(pageMargin + 10, 0, self.itemWidth - pageW - 10, JJ_Figure_BottomViewH);
             self.titleLabel.textAlignment = NSTextAlignmentLeft;
         }
             break;
@@ -362,6 +377,16 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     NSLog(@"结束了");
     
     [self.timer setFireDate:[NSDate dateWithTimeInterval:self.autoScrollInterval sinceDate:[NSDate date]]];
+}
+
+/**
+ Description 图片滚动的回调
+ */
+- (void)scrollToIndexBlock:(void(^)(NSInteger index))block
+{
+    if (block) {
+        self.scrollToIndexBlock = block;
+    }
 }
 
 /**
@@ -474,4 +499,5 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
 }
 
 @end
+
 

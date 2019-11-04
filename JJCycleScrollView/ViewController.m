@@ -160,4 +160,9 @@
     NSLog(@"点击了-%ld", (long)index);
 }
 
+- (void)jj_cycleScrollDidScrollToIndex:(NSInteger)index
+{
+    NSLog(@"滚动到-%ld", (long)index);
+}
+
 @end
