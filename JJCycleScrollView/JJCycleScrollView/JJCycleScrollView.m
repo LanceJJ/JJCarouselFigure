@@ -121,6 +121,7 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     self.bottomView = bottomView;
     
     UIPageControl *pageControl = [[UIPageControl alloc] init];
+    pageControl.enabled = NO;
     [self.bottomView addSubview:pageControl];
     
     self.pageControl = pageControl;
