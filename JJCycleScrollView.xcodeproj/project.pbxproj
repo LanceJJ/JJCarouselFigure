@@ -38,7 +38,6 @@
 		7EEE100E236E928400AA0E73 /* 20170406135300.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE100B236E928400AA0E73 /* 20170406135300.jpg */; };
 		7EEE100F236E928400AA0E73 /* 20170406135400.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE100C236E928400AA0E73 /* 20170406135400.jpg */; };
 		7EEE1010236E928400AA0E73 /* 20140306110441515.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE100D236E928400AA0E73 /* 20140306110441515.jpg */; };
-		7EEE1013236EB02100AA0E73 /* IMG_0319.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE1012236EB02100AA0E73 /* IMG_0319.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +118,6 @@
 		7EEE100B236E928400AA0E73 /* 20170406135300.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 20170406135300.jpg; sourceTree = "<group>"; };
 		7EEE100C236E928400AA0E73 /* 20170406135400.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 20170406135400.jpg; sourceTree = "<group>"; };
 		7EEE100D236E928400AA0E73 /* 20140306110441515.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 20140306110441515.jpg; sourceTree = "<group>"; };
-		7EEE1012236EB02100AA0E73 /* IMG_0319.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0319.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +168,6 @@
 		7EEE0F99236E90CD00AA0E73 /* JJCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				7EEE1011236EAFD000AA0E73 /* Image */,
 				7EEE0FD0236E919700AA0E73 /* SDWebImage */,
 				7EEE0FCC236E90D300AA0E73 /* JJCycleScrollView */,
 				7EEE0F9A236E90CD00AA0E73 /* AppDelegate.h */,
@@ -260,14 +257,6 @@
 				7EEE0FF7236E919800AA0E73 /* UIImage+GIF.h */,
 			);
 			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		7EEE1011236EAFD000AA0E73 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				7EEE1012236EB02100AA0E73 /* IMG_0319.PNG */,
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,7 +367,6 @@
 				7EEE100E236E928400AA0E73 /* 20170406135300.jpg in Resources */,
 				7EEE0FA4236E90CD00AA0E73 /* Assets.xcassets in Resources */,
 				7EEE100F236E928400AA0E73 /* 20170406135400.jpg in Resources */,
-				7EEE1013236EB02100AA0E73 /* IMG_0319.PNG in Resources */,
 				7EEE0FA2236E90CD00AA0E73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +593,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lance.JJCycleScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,6 +612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lance.JJCycleScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

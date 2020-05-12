@@ -30,27 +30,27 @@
     //创建
     JJCycleScrollView *view = [[JJCycleScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.width * 180 / 375)];
     view.delegate = self;
-    view.pageControlAliment = JJPageControlAlimentCenter;
+    view.pageControlAliment = JJPageControlAlimentRight;
     view.itemZoomScale = 1;//缩放比为1时，普通样式
-    //    view.currentPageIndicatorTintColor = [UIColor redColor];
-    //    view.pageIndicatorTintColor = [UIColor blueColor];
-    //    view.bottomViewColor = [UIColor colorWithWhite:0 alpha:0.5];
-    ////    //标题（可以不设置）
-    //    NSArray *titles = @[@"图片一",
-    //                        @"图片二",
-    //                        @"图片三"];
-    
-    //    view.titlesArray = titles;
+//    view.currentPageIndicatorTintColor = [UIColor redColor];
+//    view.pageIndicatorTintColor = [UIColor blueColor];
+//    view.bottomViewColor = [UIColor colorWithWhite:0 alpha:0.5];
+////    //标题（可以不设置）
+//    NSArray *titles = @[@"图片一",
+//                        @"图片二",
+//                        @"图片三"];
+//
+//    view.titlesArray = titles;
     
     //网络图片回调加载
-    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+    view.jj_cycleScrollLoadingImageBlock = ^(UIImageView * _Nonnull imageView, NSString * _Nonnull url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
-    }];
+    };
     
     //点击图片回调
-    [view selectItemBlock:^(NSInteger index) {
+    view.jj_cycleScrollDidSelectItemAtIndexBlock = ^(NSInteger index) {
         NSLog(@"%ld", (long)index);
-    }];
+    };
     
     //添加
     [self.view addSubview:view];
@@ -86,14 +86,14 @@
     //    view.titlesArray = titles;
     
     //网络图片回调加载
-    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+    view.jj_cycleScrollLoadingImageBlock = ^(UIImageView * _Nonnull imageView, NSString * _Nonnull url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
-    }];
+    };
     
     //点击图片回调
-    [view selectItemBlock:^(NSInteger index) {
+    view.jj_cycleScrollDidSelectItemAtIndexBlock = ^(NSInteger index) {
         NSLog(@"%ld", (long)index);
-    }];
+    };
     
     //添加
     [self.view addSubview:view];
@@ -114,7 +114,6 @@
     view.delegate = self;
     view.pageControlAliment = JJPageControlAlimentCenter;
     view.imageCornerRadius = 5;
-    view.itemZoomScale = 1;
     view.itemZoomScale = 0.9;
     view.itemSize = CGSizeMake(view.frame.size.width - 50, view.frame.size.width);
     //    view.currentPageIndicatorTintColor = [UIColor redColor];
@@ -128,14 +127,14 @@
     //    view.titlesArray = titles;
     
     //网络图片回调加载
-    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+    view.jj_cycleScrollLoadingImageBlock = ^(UIImageView * _Nonnull imageView, NSString * _Nonnull url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
-    }];
+    };
     
     //点击图片回调
-    [view selectItemBlock:^(NSInteger index) {
+    view.jj_cycleScrollDidSelectItemAtIndexBlock = ^(NSInteger index) {
         NSLog(@"%ld", (long)index);
-    }];
+    };
     
     //添加
     [self.view addSubview:view];

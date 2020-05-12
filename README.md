@@ -17,9 +17,9 @@
 
 ```objc
      //网络图片回调加载
-    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+    view.jj_cycleScrollLoadingImageBlock = ^(UIImageView * _Nonnull imageView, NSString * _Nonnull url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
-    }];
+    };
 ```	
 
 ## 使用方法
@@ -45,14 +45,14 @@
     //    view.titlesArray = titles;
     
     //网络图片回调加载（可以使用block，也可以使用代理）
-    [view loadingImageBlock:^(UIImageView *imageView, NSString *url) {
+    view.jj_cycleScrollLoadingImageBlock = ^(UIImageView * _Nonnull imageView, NSString * _Nonnull url) {
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:nil];
-    }];
+    };
     
     //点击图片回调（可以使用block，也可以使用代理）
-    [view selectItemBlock:^(NSInteger index) {
+    view.jj_cycleScrollDidSelectItemAtIndexBlock = ^(NSInteger index) {
         NSLog(@"%ld", (long)index);
-    }];
+    };
     
     //添加
     [self.view addSubview:view];

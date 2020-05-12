@@ -10,24 +10,17 @@
 
 #define JJ_Figure_BottomViewH 35
 
-typedef void(^JJScrollToIndexBlock) (NSInteger index);
-typedef void(^JJSelectItemBlock) (NSInteger index);
-typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
-
 @interface JJCycleScrollView() <UIScrollViewDelegate>
 
-@property (nonatomic, copy) JJScrollToIndexBlock scrollToIndexBlock;
-@property (nonatomic, copy) JJSelectItemBlock selectItemBlock;
-@property (nonatomic, copy) JJLoadImageBlock loadImageBlock;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *bottomView;
-@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSMutableArray *currentImageArray;
 @property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, assign) CGFloat itemHeight;
 @property (nonatomic, assign) CGFloat itemWidth;
+@property (nonatomic, weak) NSTimer *timer;
 
 @end
 
@@ -110,7 +103,7 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
 }
 
 /**
- Description 初始化控件
+ Description 初始化UIPageControl
  */
 - (void)setupBottomView
 {
@@ -201,9 +194,9 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
             imageView.image = (UIImage *)object;
             
         } else if ([object isKindOfClass:[NSString class]] && ([(NSString *)object hasPrefix:@"http:"] || [(NSString *)object hasPrefix:@"https:"])) {
-            
-            if (self.loadImageBlock) {
-                self.loadImageBlock(imageView, (NSString *)object);
+
+            if (self.jj_cycleScrollLoadingImageBlock) {
+                self.jj_cycleScrollLoadingImageBlock(imageView, (NSString *)object);
             }
             
             if (self.delegate && [self.delegate respondsToSelector:@selector(jj_cycleScrollLoadingImage:url:)]) {
@@ -218,9 +211,9 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     if (self.titlesArray.count > self.currentPage) {
         self.titleLabel.text = self.titlesArray[self.currentPage];
     }
-    
-    if (self.scrollToIndexBlock) {
-        self.scrollToIndexBlock(self.currentPage);
+
+    if (self.jj_cycleScrollDidScrollToIndexBlock) {
+        self.jj_cycleScrollDidScrollToIndexBlock(self.currentPage);
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(jj_cycleScrollDidScrollToIndex:)]) {
@@ -241,7 +234,6 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     
     CGFloat zoomScale = self.itemZoomScale;
     
-    
     for (NSInteger i = 0; i < self.scrollView.subviews.count; i++) {
         UIImageView *imageView = self.scrollView.subviews[i];
         imageView.layer.transform = CATransform3DMakeScale(1, 1, 1.0);
@@ -258,7 +250,6 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     self.scrollView.frame = CGRectMake(left, (self.frame.size.height - self.itemHeight) / 2, self.itemWidth, self.itemHeight);
     self.scrollView.contentSize = CGSizeMake(self.itemWidth * 5, self.itemHeight);
     self.scrollView.contentOffset = CGPointMake(self.itemWidth * 2, 0);
-    
     
     self.bottomView.frame = CGRectMake(0, self.itemHeight - JJ_Figure_BottomViewH, self.frame.size.width, JJ_Figure_BottomViewH);
     
@@ -310,8 +301,8 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
  */
 - (void)tapAction:(UITapGestureRecognizer *)tap
 {
-    if (self.selectItemBlock) {
-        self.selectItemBlock(self.currentPage);
+    if (self.jj_cycleScrollDidSelectItemAtIndexBlock) {
+        self.jj_cycleScrollDidSelectItemAtIndexBlock(self.currentPage);
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(jj_cycleScrollDidSelectItemAtIndex:)]) {
@@ -378,40 +369,6 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
     NSLog(@"结束了");
     
     [self.timer setFireDate:[NSDate dateWithTimeInterval:self.autoScrollInterval sinceDate:[NSDate date]]];
-}
-
-/**
- Description 图片滚动的回调
- */
-- (void)scrollToIndexBlock:(void(^)(NSInteger index))block
-{
-    if (block) {
-        self.scrollToIndexBlock = block;
-    }
-}
-
-/**
- Description 点击回调
- 
- @param block block description
- */
-- (void)selectItemBlock:(void (^)(NSInteger))block
-{
-    if (block) {
-        self.selectItemBlock = block;
-    }
-}
-
-/**
- Description 加载网络图片
- 
- @param block 网络图片加载回调
- */
-- (void)loadingImageBlock:(void(^)(UIImageView *imageView, NSString *url))block
-{
-    if (block) {
-        self.loadImageBlock = block;
-    }
 }
 
 - (void)setPageControlAliment:(JJPageControlAliment)pageControlAliment
@@ -500,5 +457,4 @@ typedef void(^JJLoadImageBlock) (UIImageView *imageView, NSString *url);
 }
 
 @end
-
 

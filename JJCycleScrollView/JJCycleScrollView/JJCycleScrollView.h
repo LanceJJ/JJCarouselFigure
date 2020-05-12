@@ -4,19 +4,19 @@
 //
 //  Created by Lance on 2019/11/3.
 //  Copyright © 2019 Lance. All rights reserved.
-//
+//  v1.0.1
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Description PageControl控件的位置（默认居中）
- 
- - JJPageControlAlimentCenter: 居中
- - JJPageControlAlimentLeft: 靠左
- - JJPageControlAlimentRight: 靠右
- */
+Description PageControl控件的位置（默认居中）
+
+- JJPageControlAlimentCenter: 居中
+- JJPageControlAlimentLeft: 靠左
+- JJPageControlAlimentRight: 靠右
+*/
 typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
     JJPageControlAlimentCenter,
     JJPageControlAlimentLeft,
@@ -26,15 +26,30 @@ typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
 @protocol JJCycleScrollViewDelegate <NSObject>
 
 @optional
-- (void)jj_cycleScrollDidScrollToIndex:(NSInteger)index;
-- (void)jj_cycleScrollDidSelectItemAtIndex:(NSInteger)index;
-- (void)jj_cycleScrollLoadingImage:(UIImageView *)imageView url:(NSString *)url;
+- (void)jj_cycleScrollDidScrollToIndex:(NSInteger)index;//图片滚动的回调
+- (void)jj_cycleScrollDidSelectItemAtIndex:(NSInteger)index;//点击回调
+- (void)jj_cycleScrollLoadingImage:(UIImageView *)imageView url:(NSString *)url;//加载网络图片
 
 @end
 
 @interface JJCycleScrollView : UIView
 
 @property (nonatomic, weak) id<JJCycleScrollViewDelegate> delegate;
+
+/**
+Description 图片滚动的回调
+*/
+@property (nonatomic, copy) void(^jj_cycleScrollDidScrollToIndexBlock)(NSInteger index);
+
+/**
+Description 点击回调
+*/
+@property (nonatomic, copy) void(^jj_cycleScrollDidSelectItemAtIndexBlock)(NSInteger index);
+
+/**
+Description 加载网络图片
+*/
+@property (nonatomic, copy) void(^jj_cycleScrollLoadingImageBlock)(UIImageView *imageView, NSString *url);
 
 /**
  Description PageControl控件的位置（默认居中）
@@ -107,24 +122,6 @@ typedef NS_ENUM(NSUInteger, JJPageControlAliment) {
  */
 @property (nonatomic, strong) NSArray *titlesArray;
 
-/**
- Description 图片滚动的回调
- */
-- (void)scrollToIndexBlock:(void(^)(NSInteger index))block;
-
-/**
- Description 点击回调
- 
- @param block block description
- */
-- (void)selectItemBlock:(void(^)(NSInteger index))block;
-
-/**
- Description 加载网络图片
- 
- @param block 网络图片加载回调
- */
-- (void)loadingImageBlock:(void(^)(UIImageView *imageView, NSString *url))block;
 
 @end
 
